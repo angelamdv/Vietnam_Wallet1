@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f3f7ec">
+  <title>Cat Wallet</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">🐱</div>
+        <div>
+          <h1>Cat Wallet</h1>
+          <p>your little money diary ♡</p>
+        </div>
+      </div>
+      <button class="icon-button" id="searchToggle" aria-label="Search expenses">⌕</button>
+    </header>
+
+    <div class="search-wrap hidden" id="searchWrap">
+      <input id="searchInput" type="search" placeholder="Search expenses..." aria-label="Search expenses">
+    </div>
+
+    <section class="summary-card" aria-label="Monthly expense summary">
+      <div class="month-navigation">
+        <button class="month-arrow" id="previousMonth" aria-label="Previous month">‹</button>
+        <h2 id="monthLabel">November 2026</h2>
+        <button class="month-arrow" id="nextMonth" aria-label="Next month">›</button>
+      </div>
+      <div class="totals">
+        <article class="total-card">
+          <span class="total-label">▣ &nbsp;Total in VND</span>
+          <strong id="totalVnd">₫0</strong>
+        </article>
+        <article class="total-card">
+          <span class="total-label">◉ &nbsp;Total in PHP</span>
+          <strong id="totalPhp">₱0.00</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="history">
+      <div class="section-heading">
+        <div>
+          <h2>Expense History</h2>
+          <p>A little record of your spending ♡</p>
+        </div>
+        <span class="record-count" id="recordCount">0 records</span>
+      </div>
+      <div id="expenseList" class="expense-list"></div>
+    </section>
+
+    <footer>🐾 &nbsp; Every little expense counts &nbsp; 🐾</footer>
+  </main>
+
+  <button class="add-button" id="openModal" aria-label="Add expense">+</button>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-heading">
+        <div>
+          <h2 id="modalTitle">Add Expense</h2>
+          <p>What did you spend on? ♡</p>
+        </div>
+        <button class="close-button" id="closeModal" aria-label="Close">×</button>
+      </div>
+      <form id="expenseForm">
+        <label for="amount">Amount (Vietnamese Dong)</label>
+        <input id="amount" type="number" min="1" step="1" placeholder="Enter VND amount" required>
+        <div class="conversion-preview">
+          <span>Peso equivalent</span>
+          <strong id="previewPhp">₱0.00</strong>
+        </div>
+
+        <label>Category</label>
+        <div class="category-grid" id="categoryGrid"></div>
+
+        <label for="description">Description</label>
+        <input id="description" type="text" maxlength="60" placeholder="e.g. Lunch, coffee, bus fare">
+
+        <label for="expenseDate">Expense date</label>
+        <input id="expenseDate" type="date" required>
+
+        <div class="modal-actions">
+          <button type="button" class="secondary-button" id="cancelModal">Cancel</button>
+          <button type="submit" class="save-button">Save expense ♡</button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
